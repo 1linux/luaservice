@@ -427,6 +427,7 @@ static int pmain(lua_State *L)
 			cp[1] = '\0';
 			if ((cp - szPath) + strlen(arg) + 1 > MAX_PATH)
 				return luaL_error(L, "Script name '%s%s' too long", szPath, arg);
+			SetCurrentDirectory(szPath);	/*  -hg	*/
 			strcpy(cp+1, arg);
 		} else {
 			return luaL_error(L, "Module name '%s' isn't fully qualified", szPath);
